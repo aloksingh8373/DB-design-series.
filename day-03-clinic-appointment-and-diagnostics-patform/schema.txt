@@ -1,0 +1,99 @@
+-------------------------
+USERS
+-------------------------
+id (PK)
+name
+email (UNIQUE)
+password
+phone
+role (patient, doctor, admin)
+created_at
+
+-------------------------
+DOCTOR_PROFILE
+-------------------------
+id (PK)
+user_id (FK -> USERS.id)
+specialty
+experience_years
+consultation_fee
+
+-------------------------
+PATIENT_PROFILE
+-------------------------
+id (PK)
+user_id (FK -> USERS.id)
+age
+gender
+blood_group
+
+-------------------------
+DEPARTMENTS
+-------------------------
+id (PK)
+name
+
+-------------------------
+DOCTOR_DEPARTMENT
+-------------------------
+id (PK)
+doctor_id (FK -> DOCTOR_PROFILE.id)
+department_id (FK -> DEPARTMENTS.id)
+
+-------------------------
+APPOINTMENTS
+-------------------------
+id (PK)
+patient_id (FK -> PATIENT_PROFILE.id)
+doctor_id (FK -> DOCTOR_PROFILE.id)
+scheduled_at
+status (scheduled, completed, cancelled, no_show)
+reason
+
+-------------------------
+CONSULTATIONS
+-------------------------
+id (PK)
+appointment_id (FK -> APPOINTMENTS.id)
+doctor_id (FK -> DOCTOR_PROFILE.id)
+patient_id (FK -> PATIENT_PROFILE.id)
+diagnosis
+notes
+consulted_at
+
+-------------------------
+TESTS
+-------------------------
+id (PK)
+name
+description
+price
+
+-------------------------
+TEST_ORDERS
+-------------------------
+id (PK)
+consultation_id (FK -> CONSULTATIONS.id)
+test_id (FK -> TESTS.id)
+instructions
+
+-------------------------
+REPORTS
+-------------------------
+id (PK)
+test_order_id (FK -> TEST_ORDERS.id)
+result
+report_url
+generated_at
+status (pending, completed)
+
+-------------------------
+PAYMENTS
+-------------------------
+id (PK)
+patient_id (FK -> PATIENT_PROFILE.id)
+appointment_id (FK -> APPOINTMENTS.id)
+amount
+payment_method
+payment_status
+paid_at
