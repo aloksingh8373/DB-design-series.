@@ -1,4 +1,6 @@
 # 📦 Day 1: Instagram Thrift Store Database Design
+LINK:
+https://dbdiagram.io/d/69d731a3808962968452f335
 
 ## 🧠 Problem
 
