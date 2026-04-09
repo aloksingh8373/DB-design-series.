@@ -1,0 +1,129 @@
+-------------------------
+USERS
+-------------------------
+id (PK)
+name
+email (UNIQUE)
+password
+role
+phone
+created_at
+
+-------------------------
+TRAINER_PROFILE
+-------------------------
+id (PK)
+user_id (FK -> USERS.id)
+bio
+experience_years
+specialization
+rating
+
+-------------------------
+CLIENT_PROFILE
+-------------------------
+id (PK)
+user_id (FK -> USERS.id)
+age
+gender
+height
+fitness_goal
+
+-------------------------
+PLANS
+-------------------------
+id (PK)
+title
+description
+price
+duration_days
+plan_type
+created_by (FK -> TRAINER_PROFILE.id)
+
+-------------------------
+SUBSCRIPTIONS
+-------------------------
+id (PK)
+client_id (FK -> CLIENT_PROFILE.id)
+plan_id (FK -> PLANS.id)
+start_date
+end_date
+status
+
+-------------------------
+PAYMENTS
+-------------------------
+id (PK)
+subscription_id (FK -> SUBSCRIPTIONS.id)
+amount
+payment_method
+payment_status
+transaction_id
+paid_at
+
+-------------------------
+SESSIONS
+-------------------------
+id (PK)
+trainer_id (FK -> TRAINER_PROFILE.id)
+client_id (FK -> CLIENT_PROFILE.id)
+session_type
+scheduled_at
+duration_minutes
+status
+meeting_link
+
+-------------------------
+CHECK_INS
+-------------------------
+id (PK)
+client_id (FK -> CLIENT_PROFILE.id)
+trainer_id (FK -> TRAINER_PROFILE.id)
+week_number
+submitted_at
+notes
+
+-------------------------
+PROGRESS
+-------------------------
+id (PK)
+checkin_id (FK -> CHECK_INS.id)
+weight
+body_fat_percentage
+chest
+waist
+hips
+progress_photos_url
+
+-------------------------
+TRAINER_NOTES
+-------------------------
+id (PK)
+trainer_id (FK -> TRAINER_PROFILE.id)
+client_id (FK -> CLIENT_PROFILE.id)
+checkin_id (FK -> CHECK_INS.id)
+note
+created_at
+
+-------------------------
+WORKOUT_PLANS
+-------------------------
+id (PK)
+plan_id (FK -> PLANS.id)
+day_number
+exercise_name
+sets
+reps
+rest_time
+
+-------------------------
+DIET_PLANS
+-------------------------
+id (PK)
+plan_id (FK -> PLANS.id)
+meal_type
+food_item
+calories
+protein
+carbs
+fats
