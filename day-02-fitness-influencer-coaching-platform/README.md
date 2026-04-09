@@ -1,5 +1,8 @@
 # 🏋️‍♂️ Fitness Influencer Coaching Platform – Database Design
 
+##LINK:
+https://dbdiagram.io/d/69d73cf68089629684536602
+
 ## 📌 Overview
 
 This project focuses on designing a scalable and practical **database system** for a fitness influencer’s online coaching business.
