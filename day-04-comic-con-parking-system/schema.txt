@@ -1,0 +1,72 @@
+-------------------------
+VEHICLE_CATEGORIES
+-------------------------
+id (PK)
+name
+description
+
+-------------------------
+VEHICLES
+-------------------------
+id (PK)
+vehicle_number
+category_id (FK -> VEHICLE_CATEGORIES.id)
+
+-------------------------
+PARKING_ZONES
+-------------------------
+id (PK)
+name
+level
+
+-------------------------
+PARKING_SPOT_CATEGORIES
+-------------------------
+id (PK)
+name
+description
+
+-------------------------
+ACCESS_CATEGORIES
+-------------------------
+id (PK)
+name
+
+-------------------------
+PARKING_SPOTS
+-------------------------
+id (PK)
+zone_id (FK -> PARKING_ZONES.id)
+spot_number
+category_id (FK -> PARKING_SPOT_CATEGORIES.id)
+is_reserved
+access_category_id (FK -> ACCESS_CATEGORIES.id)
+is_available
+
+-------------------------
+PARKING_SESSIONS
+-------------------------
+id (PK)
+vehicle_id (FK -> VEHICLES.id)
+spot_id (FK -> PARKING_SPOTS.id)
+entry_time
+exit_time
+status
+
+-------------------------
+TICKETS
+-------------------------
+id (PK)
+session_id (FK -> PARKING_SESSIONS.id)
+ticket_number
+issued_at
+
+-------------------------
+PAYMENTS
+-------------------------
+id (PK)
+session_id (FK -> PARKING_SESSIONS.id)
+amount
+payment_time
+payment_status
+payment_method
